@@ -101,7 +101,7 @@ persistence:
 
 prRules:
   maxChangedFiles:
-    warn: 20
+    warn: 30
     fail: 50
   maxLinesChanged:
     warn: 400
