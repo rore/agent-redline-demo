@@ -14,5 +14,6 @@ public record OrderRow(
     UUID id,
     BigDecimal total,
     Instant placedAt,
-    String status
+    String status,
+    String customerNotes
 ) {}
