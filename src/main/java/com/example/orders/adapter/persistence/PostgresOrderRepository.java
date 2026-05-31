@@ -39,12 +39,13 @@ public class PostgresOrderRepository implements OrderRepository {
             order.id(),
             order.total(),
             order.placedAt(),
-            order.status().name()
+            order.status().name(),
+            null /* customerNotes */
         ));
     }
 
     // Test helper; in real code this would be a database fixture.
     public void seed(UUID id, BigDecimal total, Instant placedAt) {
-        store.put(id, new OrderRow(id, total, placedAt, "PLACED"));
+        store.put(id, new OrderRow(id, total, placedAt, "PLACED", null /* customerNotes */));
     }
 }
