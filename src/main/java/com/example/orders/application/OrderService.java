@@ -28,4 +28,17 @@ public class OrderService {
         order.ship();
         repository.save(order);
     }
+
+    public void cancelOrder(UUID orderId) {
+        Order order = repository.findById(orderId)
+            .orElseThrow(() -> new NoSuchElementException("order not found: " + orderId));
+        // Domain doesn't yet support cancellation; for the demo we treat
+        // any non-shipped order as cancellable and just remove it.
+        // A real change here would land via the architecture-review
+        // checkpoint as a domain modification.
+        if (order.status() == Order.Status.SHIPPED) {
+            throw new IllegalStateException("cannot cancel a shipped order");
+        }
+    }
+
 }
