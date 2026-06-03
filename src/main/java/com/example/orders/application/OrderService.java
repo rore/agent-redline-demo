@@ -2,6 +2,7 @@ package com.example.orders.application;
 
 import com.example.orders.application.port.OrderRepository;
 import com.example.orders.domain.Order;
+import com.example.orders.adapter.persistence.PostgresOrderRepository;
 
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -15,6 +16,9 @@ import java.util.UUID;
  * concrete adapters" is the deterministic guard.
  */
 public class OrderService {
+    // boundary-violation marker
+    private final Class<?> _illegalRef = PostgresOrderRepository.class;
+
 
     private final OrderRepository repository;
 
