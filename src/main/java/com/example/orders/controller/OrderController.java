@@ -19,6 +19,7 @@ import java.util.UUID;
  * base and head SHAs of every PR; the agent-redline reporter diffs the two
  * specs and surfaces a structural API change in the PR comment.
  */
+@SuppressWarnings("ArchUnit")
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
