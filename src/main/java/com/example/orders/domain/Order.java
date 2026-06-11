@@ -34,6 +34,13 @@ public final class Order {
     public Instant placedAt() { return placedAt; }
     public Status status() { return status; }
 
+    public void cancel() {
+        if (status == Status.SHIPPED) {
+            throw new IllegalStateException("cannot cancel a shipped order");
+        }
+        status = Status.CANCELLED;
+    }
+
     public void ship() {
         if (status != Status.PLACED) {
             throw new IllegalStateException("only placed orders can ship");
