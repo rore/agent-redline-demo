@@ -29,6 +29,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    @PostMapping("/{id}/cancel")
+    public ResponseEntity<Void> cancelOrder(@PathVariable UUID id) {
+        orderService.cancelOrder(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping("/{id}/ship")
     public ResponseEntity<Void> shipOrder(@PathVariable UUID id) {
         orderService.shipOrder(id);
